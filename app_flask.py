@@ -1,6 +1,6 @@
 # app_flask.py
 from flask import Flask, render_template, request, redirect, url_for
-from db import SessionLocal, init_db, Livro
+from db import SessionLocal, inicializar_banco, Livro
 import os
 # opcional: consumir a API FastAPI via requests
 import requests
@@ -8,7 +8,7 @@ import requests
 app = Flask(__name__)
 
 # garante que tabela exista
-init_db()
+inicializar_banco()
 
 # Se quiser que o Flask consuma a API FastAPI ao invés de usar a DB diretamente,
 # defina USE_API = True e ajuste FASTAPI_URL
