@@ -63,6 +63,12 @@ source venv/bin/activate
 pip install -r dependencies.txt
 ```
 
+### 3️⃣ Subir o banco de dados com docker
+
+``` bash
+docker-compose up -d
+```
+
 ### 3️⃣ Subir a API FastAPI
 
 ``` bash

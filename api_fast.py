@@ -6,12 +6,12 @@ from pydantic import BaseModel, Field, validator
 from typing import Optional, List
 from datetime import datetime
 
-from db import SessionLocal, init_db, Livro
+from db import SessionLocal, inicializar_banco, Livro
 
 app = FastAPI(title="API Biblioteca - FastAPI")
 
 # Inicializa a tabela caso não exista
-init_db()
+inicializar_banco()
 
 # Pydantic schemas
 class LivroBase(BaseModel):
