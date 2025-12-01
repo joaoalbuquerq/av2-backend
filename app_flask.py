@@ -1,8 +1,8 @@
-# app_flask.py
+
 from flask import Flask, render_template, request, redirect, url_for
 from db import SessionLocal, inicializar_banco, Livro
 import os
-# opcional: consumir a API FastAPI via requests
+
 import requests
 
 app = Flask(__name__)
@@ -10,8 +10,6 @@ app = Flask(__name__)
 # garante que tabela exista
 inicializar_banco()
 
-# Se quiser que o Flask consuma a API FastAPI ao invés de usar a DB diretamente,
-# defina USE_API = True e ajuste FASTAPI_URL
 USE_API = os.getenv("FLASK_USE_API", "false").lower() == "true"
 FASTAPI_URL = os.getenv("FASTAPI_URL", "http://localhost:8000")
 
@@ -26,6 +24,7 @@ def listar_livros_db():
 def index():
     mensagem = None
     if request.method == "POST":
+
         # validação: titulo é obrigatório
         titulo = request.form.get("titulo", "").strip()
         autor = request.form.get("autor", "").strip() or None
@@ -92,5 +91,4 @@ def index():
     return render_template("index.html", livros=livros, mensagem=mensagem)
 
 if __name__ == "__main__":
-    # roda o Flask na porta 5000
     app.run(host="0.0.0.0", port=5000, debug=True)

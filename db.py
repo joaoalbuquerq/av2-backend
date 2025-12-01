@@ -60,10 +60,6 @@ def criar_banco():
     cur.close()
     conn.close()
 
-
-# ------------------------------------------------------------------
-# 2 - Criar tabelas específicas da aplicação
-# ------------------------------------------------------------------
 def criar_tabelas():
     print("🔧 Criando tabelas (se necessário)...")
 
@@ -74,17 +70,11 @@ def criar_tabelas():
     Base.metadata.create_all(bind=engine)
     print("✔️ Tabelas prontas.")
 
-# ------------------------------------------------------------------
-# 3 - Inicialização completa
-# ------------------------------------------------------------------
 def inicializar_banco():
     criar_banco()
     criar_tabelas()
 
 
-# ------------------------------------------------------------------
-# 4 - SQLAlchemy engine e sessão
-# ------------------------------------------------------------------
 DATABASE_URL = f"postgresql+psycopg2://{DB_USER}:{DB_PASS}@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 
 engine = create_engine(DATABASE_URL, pool_pre_ping=True)
